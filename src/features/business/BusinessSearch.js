@@ -5,12 +5,14 @@ import { useState } from "react";
 import * as businessAPI from "../../apis/businessAPI";
 // Components
 import BusinessForm from "../../components/business/BusinessForm";
-import BusinessResults from "../../components/business/BusinessResults";
+import BusinessDisplay from "../../components/business/BusinessDisplay";
 
 export default function BusinessSearch(props) {
   // Controlled inputs
-  const [category, setCategory] = useState("");
+  const [term, setTerm] = useState("");
   const [location, setLocation] = useState("");
+  const [price, setPrice] = useState(1);
+  const [open, setOpen] = useState(true);
   // Requested data
   const [businesses, setBusinesses] = useState(null);
 
@@ -19,13 +21,12 @@ export default function BusinessSearch(props) {
     // Prevent refresh on submit
     e.preventDefault();
 
-    businessAPI.search(category, location)
+    businessAPI.search(term, location, price, open)
     .then(res => {
       if(res.data.success) {
-        console.log(res.data.businesses);
         setBusinesses(res.data.businesses);
       } else {
-        console.log("Error")
+        console.log("Error");
       }
     })
     .catch(err => console.log(err));
@@ -33,15 +34,23 @@ export default function BusinessSearch(props) {
 
   return (
     <div id="businessSearch">
-      <h1>Business Search</h1>
+      <div id="businessSearch-header">
+        <h1>Business Search</h1>
+      </div>
 
-      <BusinessForm
-        setCategory={setCategory}
-        setLocation={setLocation}
-        handleSubmit={handleSubmit}/>
+      <div id="businessSearch-form-wrapper">
+        <BusinessForm
+          setTerm={setTerm}
+          setLocation={setLocation}
+          setPrice={setPrice}
+          setOpen={setOpen}
+          handleSubmit={handleSubmit}/>
+      </div>
 
       {businesses && 
-        <BusinessResults businesses={businesses}/>
+        <div id="businessSearch-results-wrapper">
+          <BusinessDisplay businesses={businesses}/>
+        </div>
       }
     </div>
   );

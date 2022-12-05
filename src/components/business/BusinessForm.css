@@ -1,0 +1,29 @@
+#businessForm {
+  text-align: center;
+}
+
+.businessForm-input,
+.businessForm-checkbox,
+.businessForm-radio {
+  margin-bottom: 0.5rem;
+}
+
+.businessForm-input input {
+  padding: 0.1rem 0.3rem;
+  font-size: var(--default-font);
+}
+
+.businessForm-submit input {
+  padding: 0.3rem 0.5rem;
+  font-size: var(--default-font);
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: var(--theme-color);
+  color: white;
+}
+
+.businessForm-submit input:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

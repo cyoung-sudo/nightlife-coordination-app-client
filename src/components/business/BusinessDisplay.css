@@ -1,0 +1,122 @@
+#businessDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+}
+
+.businessDisplay-result {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.businessDisplay-img {
+  height: 300px;
+  min-width: 50%;
+}
+
+.businessDisplay-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--light-color);
+}
+
+.businessDisplay-name {
+  margin-bottom: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.businessDisplay-rating {
+  margin-bottom: 0.3rem;
+}
+
+.businessDisplay-rating span {
+  color: var(--ratings-color);
+}
+
+.businessDisplay-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.businessDisplay-categories {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.businessDisplay-categories li {
+  margin: 0 0.3rem 0.3rem 0;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  background-color: var(--light-dark-color);
+  color: white;
+  font-weight: bold;
+}
+
+.businessDisplay-price {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.businessDisplay-location {
+  margin-bottom: 0.3rem;
+}
+
+.businessDisplay-location span {
+  position: relative;
+  top: 3px;
+}
+
+.businessDisplay-closed {
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  color: var(--error-color);
+}
+
+.businessDisplay-open {
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  color: var(--success-color);
+}
+
+.businessDisplay-content-links a {
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  background-color: var(--theme-color);
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.businessDisplay-content-links a:hover {
+  text-decoration: underline;
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  .businessDisplay-result {
+    flex-direction: row;
+    width: 80%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  .businessDisplay-result {
+    flex-direction: row;
+    width: 60%;
+  }
+}
+/* ----- /Breakpoints ----- */
