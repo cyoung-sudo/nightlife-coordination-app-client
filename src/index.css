@@ -3,6 +3,7 @@
 :root {
   /* Colors */
   --theme-color: crimson;
+  --lighter-color: hsla(0, 0%, 90%, 0.5);
   --light-color: hsla(0, 0%, 90%, 0.8);
   --light-dark-color: hsla(0, 0%, 20%, 0.8);
   --success-color: forestgreen;
@@ -10,6 +11,8 @@
   --ratings-color: orangered;
   /* Font Sizes */
   --default-font: 16px;
+  /* Measurements */
+  --navbar-height: 60px;
 }
 
 * {
