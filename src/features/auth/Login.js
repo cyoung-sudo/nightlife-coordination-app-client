@@ -24,8 +24,8 @@ export default function Signup(props) {
     .then(res => {
       if(res.data.success) {
         console.log("Successfully logged-in");
-        // Redirect to root route
-        navigate("/");
+        // Redirect to profile route
+        navigate(`/users/${res.data.user._id}`);
       } else {
         console.log(res.data.message);
       }
