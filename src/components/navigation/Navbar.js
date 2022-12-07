@@ -21,6 +21,15 @@ export default function Navbar(props) {
 
         <li>
           <NavLink
+            to="users"
+            end
+            className={({ isActive }) =>
+              isActive ? "navbar-active" : undefined
+            }>Users</NavLink>
+        </li>
+
+        <li>
+          <NavLink
             to="signup"
             end
             className={({ isActive }) =>

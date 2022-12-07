@@ -1,0 +1,47 @@
+#userDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+}
+
+.userDisplay-user {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--light-color);
+}
+
+.userDisplay-username {
+  margin-bottom: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.userDisplay-date {
+  margin-bottom: 0.3rem;
+  font-weight: 300;
+}
+
+.userDisplay-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.userDisplay-profile-link {
+  padding: 0.3rem 0.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: var(--theme-color2);
+  color: white;
+  text-decoration: none;
+}
+
+.userDisplay-profile-link:hover {
+  text-decoration: underline;
+}

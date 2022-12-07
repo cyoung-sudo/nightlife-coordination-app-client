@@ -35,12 +35,16 @@ export default function Signup(props) {
 
   return (
     <div id="signup">
-      <h1>Signup</h1>
+      <div id="signup-header">
+        <h1>Signup</h1>
+      </div>
 
-      <AuthForm 
-        setUsername={setUsername}
-        setPassword={setPassword}
-        handleSubmit={handleSubmit}/>
+      <div id="signup-form-wrapper">
+        <AuthForm 
+          setUsername={setUsername}
+          setPassword={setPassword}
+          handleSubmit={handleSubmit}/>
+      </div>
 
       <div>
         Already have an account? <Link to="/login">Login</Link>

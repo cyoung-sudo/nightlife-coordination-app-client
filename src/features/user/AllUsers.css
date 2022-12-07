@@ -1,29 +1,29 @@
-#login {
+#displayUsers {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#login-header {
+#displayUsers-header {
   margin-bottom: 2rem;
 }
 
-#login-form-wrapper {
-  width: 80%;
+#displayUsers-users-wrapper {
+  width: 100%;
 }
 
 /* ----- Breakpoints ----- */
 /* Medium screen devices (768px and above) */
 @media only screen and (min-width: 768px) {
-  #login-form-wrapper {
-    width: 60%;
+  #displayUsers-users-wrapper {
+    width: 80%;
   }
 }
  
 /* Extra big screen devices (1200px and above) */
 @media only screen and (min-width: 1200px) {
-  #login-form-wrapper {
-    width: 50%;
+  #displayUsers-users-wrapper {
+    width: 60%;
   }
 }
 /* ----- /Breakpoints ----- */

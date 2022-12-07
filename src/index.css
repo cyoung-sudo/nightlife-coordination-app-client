@@ -3,6 +3,7 @@
 :root {
   /* Colors */
   --theme-color: crimson;
+  --theme-color2: firebrick;
   --lighter-color: hsla(0, 0%, 90%, 0.5);
   --light-color: hsla(0, 0%, 90%, 0.8);
   --light-dark-color: hsla(0, 0%, 20%, 0.8);
