@@ -30,7 +30,6 @@ export const login = async (username, password) => {
 
 //----- Logout authenticated user
 export const logout = async () => {
-  console.log("test")
   const res = await api.request({
     method: "POST",
     url: "/api/auth/logout"
