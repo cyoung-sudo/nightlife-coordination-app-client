@@ -19,18 +19,25 @@ export default function Signup(props) {
   const handleSubmit = e => {
     // Prevent refresh on submit
     e.preventDefault();
-    
-    authAPI.signup(username, password)
-    .then(res => {
-      if(res.data.success) {
-        console.log("Account created");
-        // Redirect to login route
-        navigate("/login");
-      } else {
-        console.log(res.data.message);
-      }
-    })
-    .catch(err => console.log(err));
+
+    // Validations
+    if(username === "") {
+      props.handlePopup("No username given", "error");
+    } else if(password === "") {
+      props.handlePopup("No password given", "error");
+    } else {
+      authAPI.signup(username, password)
+      .then(res => {
+        if(res.data.success) {
+          props.handlePopup("Account created", "success");
+          // Redirect to login route
+          navigate("/login");
+        } else {
+          props.handlePopup(res.data.message, "error");
+        }
+      })
+      .catch(err => console.log(err));
+    }
   };
 
   return (

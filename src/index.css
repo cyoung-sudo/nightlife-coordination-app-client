@@ -9,6 +9,8 @@
   --light-dark-color: hsla(0, 0%, 20%, 0.8);
   --success-color: forestgreen;
   --error-color: crimson;
+  --light-success-color: hsla(120, 90%, 90%, 0.5);
+  --light-error-color: hsla(0, 90%, 90%, 0.5);
   --ratings-color: orangered;
   /* Font Sizes */
   --default-font: 16px;

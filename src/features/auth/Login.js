@@ -8,7 +8,7 @@ import * as authAPI from "../../apis/authAPI";
 // Components
 import AuthForm from "../../components/auth/AuthForm";
 
-export default function Signup(props) {
+export default function Login(props) {
   // Controlled inputs
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,17 +20,24 @@ export default function Signup(props) {
     // Prevent refresh on submit
     e.preventDefault();
 
-    authAPI.login(username, password)
-    .then(res => {
-      if(res.data.success) {
-        console.log("Successfully logged-in");
-        // Redirect to profile route
-        navigate(`/users/${res.data.user._id}`);
-      } else {
-        console.log(res.data.message);
-      }
-    })
-    .catch(err => console.log(err));
+    // Validations
+    if(username === "") {
+      props.handlePopup("No username given", "error");
+    } else if(password === "") {
+      props.handlePopup("No password given", "error");
+    } else {
+      authAPI.login(username, password)
+      .then(res => {
+        if(res.data.success) {
+          props.handlePopup("Successfully logged-in", "success");
+          // Redirect to profile route
+          navigate(`/users/${res.data.user._id}`);
+        } else {
+          props.handlePopup(res.data.message, "error");
+        }
+      })
+      .catch(err => console.log(err));
+    }
   };
 
   return (

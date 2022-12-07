@@ -15,7 +15,7 @@
 }
 
 #navbar-links {
-  display: flex;
+  display: none;
   list-style: none;
 }
 
@@ -35,3 +35,19 @@
 .navbar-active {
   background-color: var(--lighter-color);
 }
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #navbar-links {
+    display: flex;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #navbar-links {
+    display: flex;
+  }
+}
+/* ----- /Breakpoints ----- */
