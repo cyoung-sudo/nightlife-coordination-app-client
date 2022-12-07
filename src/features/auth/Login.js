@@ -29,6 +29,7 @@ export default function Login(props) {
       authAPI.login(username, password)
       .then(res => {
         if(res.data.success) {
+          props.setUser(res.data.user);
           props.handlePopup("Successfully logged-in", "success");
           // Redirect to profile route
           navigate(`/users/${res.data.user._id}`);

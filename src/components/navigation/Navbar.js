@@ -28,23 +28,44 @@ export default function Navbar(props) {
             }>Users</NavLink>
         </li>
 
-        <li>
-          <NavLink
-            to="signup"
-            end
-            className={({ isActive }) =>
-              isActive ? "navbar-active" : undefined
-            }>Signup</NavLink>
-        </li>
+        {props.user &&
+          <li>
+            <NavLink
+              to={`users/${props.user._id}`}
+              end
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined
+              }>Profile</NavLink>
+          </li>
+        }
 
-        <li>
-          <NavLink
-            to="login"
-            end
-            className={({ isActive }) =>
-              isActive ? "navbar-active" : undefined
-            }>Login</NavLink>
-        </li>
+        {props.user &&
+          <li>
+            <button onClick={props.handleLogout}>Logout</button>
+          </li>
+        }
+
+        {!props.user &&
+          <li>
+            <NavLink
+              to="signup"
+              end
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined
+              }>Signup</NavLink>
+          </li>
+        }
+
+        {!props.user &&
+          <li>
+            <NavLink
+              to="login"
+              end
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined
+              }>Login</NavLink>
+          </li>
+        }
       </ul>
     </div>
   );

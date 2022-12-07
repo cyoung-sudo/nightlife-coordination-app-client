@@ -1,8 +1,8 @@
 import './App.css';
 // React
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Router
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 // Features
 import Home from "./features/home/Home";
 import Signup from "./features/auth/Signup";
@@ -14,11 +14,28 @@ import Profile from "./features/user/Profile";
 import Navbar from "./components/navigation/Navbar";
 import Footer from "./components/navigation/Footer";
 import Popup from "./components/general/Popup";
+// APIs
+import * as authAPI from "./apis/authAPI";
 
 function App() {
+  // Requested data
+  const [user, setUser] = useState(null);
   // Popup message
   const [message, setMessage] = useState("");
   const [msgMode, setMsgMode] = useState("");
+  // Hooks
+  const navigate = useNavigate();
+
+  // Retrieve authenticated user
+  useEffect(() => {
+    authAPI.getUser()
+    .then(res => {
+      if(res.data.success) {
+        setUser(res.data.user);
+      }
+    })
+    .catch(err => console.log(err));
+  }, []);
 
   // Handles popups
   const handlePopup = (message, mode) => {
@@ -26,9 +43,25 @@ function App() {
     setMsgMode(mode);
   };
 
+  // Handle logout
+  const handleLogout = () => {
+    authAPI.logout()
+    .then(res => {
+      if(res.data.success) {
+        handlePopup("Successfully logged-out", "success");
+        setUser(null);
+        // Redirect to root route
+        navigate("/");
+      }
+    })
+    .catch(err => console.log(err));
+  };
+
   return (
     <div id="app">
-      <Navbar/>
+      <Navbar 
+        user={user}
+        handleLogout={handleLogout}/>
 
       <div id="app-content">
         {message &&
@@ -46,7 +79,9 @@ function App() {
             <Signup handlePopup={handlePopup}/>
           }/>
           <Route path="login" element={
-            <Login handlePopup={handlePopup}/>
+            <Login
+              setUser={setUser}
+              handlePopup={handlePopup}/>
           }/>
           {/*----- /Auth routes -----*/}
 

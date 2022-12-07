@@ -32,6 +32,25 @@
   text-decoration: none;
 }
 
+
+#navbar-links li button {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+  border: none;
+  background: none;
+  color: white;
+  font-size: var(--default-font);
+  text-decoration: none;
+}
+
+#navbar-links li a:hover,
+#navbar-links li button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .navbar-active {
   background-color: var(--lighter-color);
 }
