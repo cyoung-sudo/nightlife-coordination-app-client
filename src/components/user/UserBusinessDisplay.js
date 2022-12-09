@@ -56,6 +56,11 @@ export default function UserBusinessDisplay(props) {
             
             <div className="userBusinessDisplay-content-links">
               <a href={business.url} target="_blank" rel="noreferrer">Visit Yelp Page</a>
+              {props.currentUser && (props.currentUser._id === props.profileUser._id) &&
+                <button onClick={() => props.handleRemove(business.id)}>
+                  No Longer Going
+                </button>
+              }
             </div>
           </div>
         </li>

@@ -14,6 +14,20 @@ export const create = async (userId, businessId) => {
   return res;
 };
 
+//----- Delete given user-business
+export const deleteUserBusiness = async (userId, businessId) => {
+  const res = await api.request({
+    method: "DELETE",
+    data: {
+      userId,
+      businessId
+    },
+    url: "/api/userBusiness"
+  });
+
+  return res;
+};
+
 //----- Retrieve user-businesses for given user
 export const getForUser = async userId => {
   const res = await api.request({

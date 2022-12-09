@@ -95,7 +95,12 @@ function App() {
           {/*----- User routes -----*/}
           <Route path="users">
               <Route index element={<AllUsers/>}/>
-              <Route path=":id" element={<Profile/>}/>
+              <Route path=":id" element={
+                <Profile 
+                  user={user}
+                  handlePopup={handlePopup}
+                  handleExpiredSession={handleExpiredSession}/>
+              }/>
           </Route>
           {/*----- /User routes -----*/}
 
