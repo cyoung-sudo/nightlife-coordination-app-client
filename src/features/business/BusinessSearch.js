@@ -3,6 +3,8 @@ import "./BusinessSearch.css";
 import { useState } from "react";
 // APIs
 import * as businessAPI from "../../apis/businessAPI";
+import * as authAPI from "../../apis/authAPI";
+import * as userBusinessAPI from "../../apis/userBusinessAPI";
 // Components
 import BusinessForm from "../../components/business/BusinessForm";
 import BusinessDisplay from "../../components/business/BusinessDisplay";
@@ -25,8 +27,29 @@ export default function BusinessSearch(props) {
     .then(res => {
       if(res.data.success) {
         setBusinesses(res.data.businesses);
+      }
+    })
+    .catch(err => console.log(err));
+  };
+
+  //----- Add business for user
+  const handleAddBusiness = businessId => {
+    // Check authentication
+    authAPI.getUser()
+    .then(res => {
+      if(res.data.success) {
+        userBusinessAPI.create(res.data.user._id, businessId)
+        .then(res => {
+          if(res.data.success) {
+            props.handlePopup("Business added", "success");
+          } else {
+            props.handlePopup(res.data.message, "error");
+          }
+        })
+        .catch(err => console.log(err));
       } else {
-        console.log("Error");
+        props.handlePopup(res.data.message, "error");
+        props.handleExpiredSession();
       }
     })
     .catch(err => console.log(err));
@@ -49,7 +72,10 @@ export default function BusinessSearch(props) {
 
       {businesses && 
         <div id="businessSearch-results-wrapper">
-          <BusinessDisplay businesses={businesses}/>
+          <BusinessDisplay
+            user={props.user}
+            businesses={businesses}
+            handleAddBusiness={handleAddBusiness}/>
         </div>
       }
     </div>

@@ -1,24 +1,24 @@
-import "./BusinessDisplay.css";
+import "./UserBusinessDisplay.css";
 // Icons
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 // Rating
 import Rating from "react-rating";
 
-export default function BusinessDisplay(props) {
+export default function UserBusinessDisplay(props) {
   return (
-    <ul id="businessDisplay">
+    <ul id="userBusinessDisplay">
       {props.businesses.map((business, idx) => (
-        <li className="businessDisplay-result" key={idx}>
-          <img className="businessDisplay-img" src={business.image_url} alt="business-image"/>
+        <li className="userBusinessDisplay-result" key={idx}>
+          <img className="userBusinessDisplay-img" src={business.image_url} alt="business-image"/>
 
-          <div className="businessDisplay-content">
-            <div className="businessDisplay-content-main">
-              <div className="businessDisplay-name">{business.name}</div>
+          <div className="userBusinessDisplay-content">
+            <div className="userBusinessDisplay-content-main">
+              <div className="userBusinessDisplay-name">{business.name}</div>
 
               {/*----- Rating -----*/}
               {/* CAUSES "UNSAFE_componentWillReceiveProps" WARNING */}
-              <div className="businessDisplay-rating">
+              <div className="userBusinessDisplay-rating">
                 <Rating 
                   start={0}
                   stop={5}
@@ -31,16 +31,16 @@ export default function BusinessDisplay(props) {
               {/*----- /Rating -----*/}
 
               {/*----- Info -----*/}
-              <div className="businessDisplay-info">
-                <ul className="businessDisplay-categories">
+              <div className="userBusinessDisplay-info">
+                <ul className="userBusinessDisplay-categories">
                   {business.categories.map((category, idx) => (
                     <li key={idx}>
                       {category.title}
                     </li>
                   ))}
                 </ul>
-                <div className="businessDisplay-price">{business.price}</div>
-                <div className="businessDisplay-location">
+                <div className="userBusinessDisplay-price">{business.price}</div>
+                <div className="userBusinessDisplay-location">
                   <span><RxDotFilled/></span>{business.location.city}, {business.location.state}
                 </div>
               </div>
@@ -48,19 +48,14 @@ export default function BusinessDisplay(props) {
 
               {/*----- Status -----*/}
               {business.is_closed && 
-                <div className="businessDisplay-closed">Closed</div>}
+                <div className="userBusinessDisplay-closed">Closed</div>}
               {!business.is_closed && 
-                <div className="businessDisplay-open">Open</div>}
+                <div className="userBusinessDisplay-open">Open</div>}
               {/*----- /Status -----*/}
             </div>
             
-            <div className="businessDisplay-content-links">
+            <div className="userBusinessDisplay-content-links">
               <a href={business.url} target="_blank" rel="noreferrer">Visit Yelp Page</a>
-              {props.user &&
-                <button onClick={() => props.handleAddBusiness(business.id)}>
-                  Go Tonight
-                </button>
-              }
             </div>
           </div>
         </li>

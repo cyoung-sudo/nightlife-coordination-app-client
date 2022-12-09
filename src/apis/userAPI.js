@@ -3,7 +3,7 @@ import api from "./configs/axiosConfig";
 //----- Retrieve all users
 export const getAll = async () => {
   const res = await api.request({
-    method: "get",
+    method: "GET",
     url: "/api/user"
   });
 
@@ -13,7 +13,7 @@ export const getAll = async () => {
 //----- Retrieve single user
 export const getOne = async id => {
   const res = await api.request({
-    method: "post",
+    method: "POST",
     data: { id },
     url: "/api/user"
   });

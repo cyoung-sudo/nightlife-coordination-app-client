@@ -26,7 +26,7 @@ function App() {
   // Hooks
   const navigate = useNavigate();
 
-  // Retrieve authenticated user
+  //----- Retrieve authenticated user
   useEffect(() => {
     authAPI.getUser()
     .then(res => {
@@ -37,13 +37,13 @@ function App() {
     .catch(err => console.log(err));
   }, []);
 
-  // Handles popups
+  //----- Handles popups
   const handlePopup = (message, mode) => {
     setMessage(message);
     setMsgMode(mode);
   };
 
-  // Handle logout
+  //----- Handle logout
   const handleLogout = () => {
     authAPI.logout()
     .then(res => {
@@ -55,6 +55,13 @@ function App() {
       }
     })
     .catch(err => console.log(err));
+  };
+
+  //----- Handle expired session
+  const handleExpiredSession = () => {
+    setUser(null);
+    // Redirect to root route
+    navigate("/");
   };
 
   return (
@@ -92,7 +99,12 @@ function App() {
           </Route>
           {/*----- /User routes -----*/}
 
-          <Route path="business-search" element={<BusinessSearch/>}/>
+          <Route path="business-search" element={
+            <BusinessSearch 
+              user={user}
+              handlePopup={handlePopup}
+              handleExpiredSession={handleExpiredSession}/>
+          }/>
         </Routes>
       </div>
 

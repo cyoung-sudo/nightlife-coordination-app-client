@@ -10,7 +10,7 @@ export default function AllUsers(props) {
   // Requested data
   const [users, setUsers] = useState(null);
 
-  // Retrieve all users
+  //----- Retrieve all users
   useEffect(() => {
     userAPI.getAll()
     .then(res => {

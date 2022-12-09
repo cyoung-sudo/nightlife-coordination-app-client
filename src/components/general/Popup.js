@@ -6,8 +6,11 @@ export default function Popup(props) {
   // References
   const timerId = useRef(null);
 
-  // Set timer for popup
+  //----- Set timer for popup
   useEffect(() => {
+    // Scroll to top of page
+    window.scrollTo(0, 0);
+
     // 3sec duration
     timerId.current = setTimeout(() => {
       props.handlePopup("", "");

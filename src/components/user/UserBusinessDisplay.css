@@ -1,4 +1,4 @@
-#businessDisplay {
+#userBusinessDisplay {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,19 +7,19 @@
   list-style: none;
 }
 
-.businessDisplay-result {
+.userBusinessDisplay-result {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 2rem;
 }
 
-.businessDisplay-img {
+.userBusinessDisplay-img {
   height: 300px;
   min-width: 50%;
 }
 
-.businessDisplay-content {
+.userBusinessDisplay-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,33 +28,33 @@
   background-color: var(--light-color);
 }
 
-.businessDisplay-name {
+.userBusinessDisplay-name {
   margin-bottom: 0.3rem;
   font-size: 1.3rem;
   font-weight: bold;
 }
 
-.businessDisplay-rating {
+.userBusinessDisplay-rating {
   margin-bottom: 0.3rem;
 }
 
-.businessDisplay-rating span {
+.userBusinessDisplay-rating span {
   color: var(--ratings-color);
 }
 
-.businessDisplay-info {
+.userBusinessDisplay-info {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.businessDisplay-categories {
+.userBusinessDisplay-categories {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
 }
 
-.businessDisplay-categories li {
+.userBusinessDisplay-categories li {
   margin: 0 0.3rem 0.3rem 0;
   padding: 0.3rem 0.5rem;
   border-radius: 0.3rem;
@@ -63,33 +63,33 @@
   font-weight: bold;
 }
 
-.businessDisplay-price {
+.userBusinessDisplay-price {
   font-weight: bold;
   margin-bottom: 0.3rem;
 }
 
-.businessDisplay-location {
+.userBusinessDisplay-location {
   margin-bottom: 0.3rem;
 }
 
-.businessDisplay-location span {
+.userBusinessDisplay-location span {
   position: relative;
   top: 3px;
 }
 
-.businessDisplay-closed {
+.userBusinessDisplay-closed {
   margin-bottom: 0.3rem;
   font-weight: bold;
   color: var(--error-color);
 }
 
-.businessDisplay-open {
+.userBusinessDisplay-open {
   margin-bottom: 0.3rem;
   font-weight: bold;
   color: var(--success-color);
 }
 
-.businessDisplay-content-links a {
+.userBusinessDisplay-content-links a {
   display: inline-block;
   margin-right: 1rem;
   padding: 0.3rem 0.5rem;
@@ -100,7 +100,7 @@
   text-decoration: none;
 }
 
-.businessDisplay-content-links button {
+.userBusinessDisplay-content-links button {
   margin-right: 1rem;
   padding: 0.3rem 0.5rem;
   border: none;
@@ -111,22 +111,22 @@
   font-weight: bold;
 }
 
-.businessDisplay-content-links a:hover,
-.businessDisplay-content-links button:hover {
+.userBusinessDisplay-content-links a:hover,
+.userBusinessDisplay-content-links button:hover {
   text-decoration: underline;
 }
 
 /* ----- Breakpoints ----- */
 /* Medium screen devices (768px and above) */
 @media only screen and (min-width: 768px) {
-  .businessDisplay-result {
+  .userBusinessDisplay-result {
     flex-direction: row;
   }
 }
  
 /* Extra big screen devices (1200px and above) */
 @media only screen and (min-width: 1200px) {
-  .businessDisplay-result {
+  .userBusinessDisplay-result {
     flex-direction: row;
   }
 }

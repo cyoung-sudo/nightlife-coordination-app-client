@@ -16,7 +16,7 @@ export default function AuthForm({setUsername, setPassword, handleSubmit}) {
         <label htmlFor="authForm-password">Password</label>
         <input
           onChange={e => setPassword(e.target.value)}
-          type="text" 
+          type="password" 
           id="authForm-password"
           placeholder="password"/>
       </div>

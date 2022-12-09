@@ -3,7 +3,7 @@ import api from "./configs/axiosConfig";
 //----- Signup new user
 export const signup = async (username, password) => {
   const res = await api.request({
-    method: "post",
+    method: "POST",
     data: {
       username,
       password
