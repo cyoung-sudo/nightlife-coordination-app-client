@@ -1,10 +1,11 @@
 import "./BusinessSearch.css";
 // React
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // APIs
 import * as businessAPI from "../../apis/businessAPI";
 import * as authAPI from "../../apis/authAPI";
 import * as userBusinessAPI from "../../apis/userBusinessAPI";
+import * as userSearchAPI from "../../apis/userSearchAPI";
 // Components
 import BusinessForm from "../../components/business/BusinessForm";
 import BusinessDisplay from "../../components/business/BusinessDisplay";
@@ -18,12 +19,56 @@ export default function BusinessSearch(props) {
   // Requested data
   const [businesses, setBusinesses] = useState(null);
 
+  //----- Search for businesses w/ user-search
+  useEffect(() => {
+    // Check authentication
+    if(props.user) {
+      // Retrieve user-search
+      userSearchAPI.getForUser(props.user._id)
+      .then(res => {
+        if(res.data.success) {
+          // Search for businesses
+          return businessAPI.search(
+            res.data.userSearch.term,
+            res.data.userSearch.location,
+            res.data.userSearch.price,
+            res.data.userSearch.open
+          );
+        } else {
+          return {
+            data: {
+              success: false,
+              message: "No search history found"
+            }
+          };
+        }
+      })
+      .then(res => {
+        if(res.data.success) {
+          setBusinesses(res.data.businesses);
+        }
+      })
+      .catch(err => console.log(err));
+    }
+  }, [])
+
   //----- Submits form data
   const handleSubmit = e => {
     // Prevent refresh on submit
     e.preventDefault();
 
-    businessAPI.search(term, location, price, open)
+    // Check authentication
+    authAPI.getUser()
+    .then(res => {
+      if(res.data.success) {
+        // Add user-search
+        return userSearchAPI.create(res.data.user._id, term, location, price, open);
+      }
+    })
+    .then(res => {
+      // Search for businesses
+      return businessAPI.search(term, location, price, open)
+    })
     .then(res => {
       if(res.data.success) {
         setBusinesses(res.data.businesses);
