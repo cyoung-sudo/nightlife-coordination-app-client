@@ -8,7 +8,7 @@ import * as userSearchAPI from "../../apis/userSearchAPI";
 import * as userBusinessAPI from "../../apis/userBusinessAPI";
 
 export default function Settings(props) {
-  // Loading status
+  // Requested data
   const [authenticated, setAuthenticated] = useState(false);
 
   //----- Checks authentication on load

@@ -14,6 +14,24 @@
   color: white;
 }
 
+/*----- Navbar toggle -----*/
+#navbar-collapse-toggle button {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+  border: none;
+  font-size: 1.2rem;
+  background: none;
+  color: white;
+}
+
+.navbar-collapse-active {
+  background-color: var(--lighter-color);
+}
+/*----- /Navbar toggle -----*/
+
+/*----- Navlinks -----*/
 #navbar-links {
   display: none;
   list-style: none;
@@ -50,6 +68,42 @@
   cursor: pointer;
   text-decoration: underline;
 }
+/*----- /Navlinks -----*/
+
+/*----- Collapsed navlinks -----*/
+#navbar-links-collapsed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: var(--navbar-height);
+  background-color: var(--light-dark-color);
+  list-style: none;
+}
+
+#navbar-links-collapsed li a {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+#navbar-links-collapsed li button {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  background: none;
+  color: white;
+  font-size: var(--default-font);
+  font-weight: bold;
+}
+/*----- /Collapsed navlinks -----*/
 
 .navbar-active {
   background-color: var(--lighter-color);
@@ -61,12 +115,28 @@
   #navbar-links {
     display: flex;
   }
+
+  #navbar-links-collapsed {
+    display: none;
+  }
+
+  #navbar-collapse-toggle {
+    display: none;
+  }
 }
  
 /* Extra big screen devices (1200px and above) */
 @media only screen and (min-width: 1200px) {
   #navbar-links {
     display: flex;
+  }
+
+  #navbar-links-collapsed {
+    display: none;
+  }
+
+  #navbar-collapse-toggle {
+    display: none;
   }
 }
 /* ----- /Breakpoints ----- */
