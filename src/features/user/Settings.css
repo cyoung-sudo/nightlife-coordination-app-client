@@ -1,0 +1,57 @@
+#settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+#settings-header {
+  margin-bottom: 2rem;
+}
+
+#settings-list {
+  width: 80%;
+  padding: 1rem;
+  background-color: var(--light-color);
+  list-style: none;
+}
+
+.settings-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings-group div {
+  font-size: 1.2rem;
+}
+
+.settings-group button {
+  padding: 0.3rem 0.5rem;
+  font-size: var(--default-font);
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: var(--theme-color2);
+  color: white;
+}
+
+.settings-group button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #settings-list {
+    width: 60%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #settings-list {
+    width: 50%;
+  }
+}
+/* ----- /Breakpoints ----- */

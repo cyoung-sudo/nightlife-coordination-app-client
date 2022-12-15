@@ -20,3 +20,13 @@ export const getOne = async id => {
 
   return res;
 };
+
+//----- Delete authenticated user
+export const deleteUser = async () => {
+  const res = await api.request({
+    method: "DELETE",
+    url: "/api/user"
+  });
+
+  return res;
+};

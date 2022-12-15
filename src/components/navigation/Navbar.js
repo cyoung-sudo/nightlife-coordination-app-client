@@ -41,6 +41,17 @@ export default function Navbar(props) {
 
         {props.user &&
           <li>
+            <NavLink
+              to="users/settings"
+              end
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined
+              }>Settings</NavLink>
+          </li>
+        }
+
+        {props.user &&
+          <li>
             <button onClick={props.handleLogout}>Logout</button>
           </li>
         }

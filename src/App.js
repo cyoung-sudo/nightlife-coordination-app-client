@@ -10,6 +10,7 @@ import Login from "./features/auth/Login";
 import BusinessSearch from "./features/business/BusinessSearch";
 import AllUsers from "./features/user/AllUsers";
 import Profile from "./features/user/Profile";
+import Settings from "./features/user/Settings";
 // Components
 import Navbar from "./components/navigation/Navbar";
 import Footer from "./components/navigation/Footer";
@@ -98,6 +99,11 @@ function App() {
               <Route path=":id" element={
                 <Profile 
                   user={user}
+                  handlePopup={handlePopup}
+                  handleExpiredSession={handleExpiredSession}/>
+              }/>
+              <Route path="settings" element={
+                <Settings
                   handlePopup={handlePopup}
                   handleExpiredSession={handleExpiredSession}/>
               }/>
