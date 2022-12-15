@@ -9,6 +9,9 @@ import * as userAPI from "../../apis/userAPI";
 export default function AllUsers(props) {
   // Requested data
   const [users, setUsers] = useState(null);
+  // Pagination
+  const [page, setPage] = useState(1);
+  const [pageContent, setPageContent] = useState(null);
 
   //----- Retrieve all users
   useEffect(() => {
@@ -21,7 +24,24 @@ export default function AllUsers(props) {
     .catch(err => console.log(err));
   }, []);
 
-  if(users) {
+  //----- Handles page changes
+  useEffect(() => {
+    if(users) {
+      handlePage();
+    }
+  }, [users, page]);
+
+  //----- Set page content (10 per page)
+  const handlePage = () => {
+    let start = (page - 1) * 10
+    let end = start + 10;
+    setPageContent(users.slice(start, end));
+
+    // Scroll to top of page
+    window.scrollTo(0, 0);
+  };
+
+  if(pageContent) {
     return (
       <div id="displayUsers">
         <div id="displayUsers-header">
@@ -29,7 +49,17 @@ export default function AllUsers(props) {
         </div>
 
         <div id="displayUsers-users-wrapper">
-          <UserDisplay users={users}/>
+          <UserDisplay users={pageContent}/>
+        </div>
+
+        <div id="displayUsers-pagination">
+          {(page > 1) &&
+            <button onClick={() => setPage(state => state - 1)}>Prev</button>
+          }
+          <div>Page: {page}</div>
+          {(page < (Math.ceil(users.length / 10))) &&
+            <button onClick={() => setPage(state => state + 1)}>Next</button>
+          }
         </div>
       </div>
     );

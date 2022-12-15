@@ -18,6 +18,9 @@ export default function BusinessSearch(props) {
   const [open, setOpen] = useState(true);
   // Requested data
   const [businesses, setBusinesses] = useState(null);
+  // Pagination
+  const [page, setPage] = useState(1);
+  const [pageContent, setPageContent] = useState(null);
 
   //----- Search for businesses w/ user-search
   useEffect(() => {
@@ -35,12 +38,7 @@ export default function BusinessSearch(props) {
             res.data.userSearch.open
           );
         } else {
-          return {
-            data: {
-              success: false,
-              message: "No search history found"
-            }
-          };
+          return {data: {success: false }};
         }
       })
       .then(res => {
@@ -51,6 +49,13 @@ export default function BusinessSearch(props) {
       .catch(err => console.log(err));
     }
   }, [])
+
+  //----- Handles page changes
+  useEffect(() => {
+    if(businesses) {
+      handlePage();
+    }
+  }, [businesses, page]);
 
   //----- Submits form data
   const handleSubmit = e => {
@@ -100,6 +105,16 @@ export default function BusinessSearch(props) {
     .catch(err => console.log(err));
   };
 
+  //----- Set page content (10 per page)
+  const handlePage = () => {
+    let start = (page - 1) * 10
+    let end = start + 10;
+    setPageContent(businesses.slice(start, end));
+
+    // Scroll to top of page
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div id="businessSearch">
       <div id="businessSearch-header">
@@ -115,12 +130,24 @@ export default function BusinessSearch(props) {
           handleSubmit={handleSubmit}/>
       </div>
 
-      {businesses && 
+      {pageContent && 
         <div id="businessSearch-results-wrapper">
           <BusinessDisplay
             user={props.user}
-            businesses={businesses}
+            businesses={pageContent}
             handleAddBusiness={handleAddBusiness}/>
+        </div>
+      }
+
+      {pageContent && 
+        <div id="businessSearch-pagination">
+          {(page > 1) &&
+            <button onClick={() => setPage(state => state - 1)}>Prev</button>
+          }
+          <div>Page: {page}</div>
+          {(page < (Math.ceil(businesses.length / 10))) &&
+            <button onClick={() => setPage(state => state + 1)}>Next</button>
+          }
         </div>
       }
     </div>

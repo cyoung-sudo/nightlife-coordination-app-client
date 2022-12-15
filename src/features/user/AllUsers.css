@@ -13,6 +13,28 @@
   width: 100%;
 }
 
+/*----- Pagination -----*/
+#displayUsers-pagination {
+  display: flex;
+  align-items: center;
+}
+
+#displayUsers-pagination div {
+  margin: 0 1rem;
+  font-weight: bold;
+}
+
+#displayUsers-pagination button {
+  padding: 0.3rem 0.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: var(--theme-color2);
+  color: white;
+  font-size: var(--default-font);
+  font-weight: bold;
+}
+/*----- /Pagination -----*/
+
 /* ----- Breakpoints ----- */
 /* Medium screen devices (768px and above) */
 @media only screen and (min-width: 768px) {
