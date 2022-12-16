@@ -3,6 +3,7 @@ import "./Attendance.css";
 import { useState, useEffect } from "react";
 // Components
 import BusinessDisplay from "../../components/business/BusinessDisplay";
+import Loading from "../../components/general/Loading";
 // APIs
 import * as businessAPI from "../../apis/businessAPI";
 import * as userBusinessAPI from "../../apis/userBusinessAPI";
@@ -85,5 +86,7 @@ export default function Attendance(props) {
         </div>
       </div>
     );
+  } else {
+    return <Loading/>;
   }
 };

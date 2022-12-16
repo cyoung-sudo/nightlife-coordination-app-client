@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // Components
 import UserBusinessDisplay from "../../components/user/UserBusinessDisplay";
+import Loading from "../../components/general/Loading";
 // API
 import * as userAPI from "../../apis/userAPI";
 import * as userBusinessAPI from "../../apis/userBusinessAPI";
@@ -87,5 +88,7 @@ export default function Profile(props) {
         </div>
       </div>
     );
+  } else {
+    return <Loading/>;
   }
 };
