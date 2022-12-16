@@ -61,6 +61,9 @@ export default function BusinessDisplay(props) {
                   Go Tonight
                 </button>
               }
+              {props.attendees &&
+                <span>Attendees: {props.attendees[business.id]}</span>
+              }
             </div>
           </div>
         </li>

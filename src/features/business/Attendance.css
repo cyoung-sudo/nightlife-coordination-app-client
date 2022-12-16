@@ -1,0 +1,52 @@
+#attendance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+#attendance-header {
+  margin-bottom: 2rem;
+}
+
+#attendance-businesses-wrapper {
+  width: 100%;
+}
+
+/*----- Pagination -----*/
+#attendance-pagination {
+  display: flex;
+  align-items: center;
+}
+
+#attendance-pagination div {
+  margin: 0 1rem;
+  font-weight: bold;
+}
+
+#attendance-pagination button {
+  padding: 0.3rem 0.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: var(--theme-color2);
+  color: white;
+  font-size: var(--default-font);
+  font-weight: bold;
+}
+/*----- /Pagination -----*/
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #attendance-businesses-wrapper {
+    width: 80%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #attendance-businesses-wrapper {
+    width: 60%;
+  }
+}
+/* ----- /Breakpoints ----- */

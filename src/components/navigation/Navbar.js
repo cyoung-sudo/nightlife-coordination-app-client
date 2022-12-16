@@ -29,11 +29,20 @@ export default function Navbar(props) {
       <ul id="navbar-links">
         <li>
           <NavLink
-            to="business-search"
+            to="businesses/search"
             end
             className={({ isActive }) =>
               isActive ? "navbar-active" : undefined
-            }>Businesses</NavLink>
+            }>Search</NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="businesses/attendance"
+            end
+            className={({ isActive }) =>
+              isActive ? "navbar-active" : undefined
+            }>Attendance</NavLink>
         </li>
 
         <li>
@@ -102,11 +111,20 @@ export default function Navbar(props) {
         <ul id="navbar-links-collapsed">
           <li>
             <NavLink
-              to="business-search"
+              to="businesses/search"
               end
               className={({ isActive }) =>
                 isActive ? "navbar-active" : undefined
-              }>Businesses</NavLink>
+              }>Search</NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="businesses/attendance"
+              end
+              className={({ isActive }) =>
+                isActive ? "navbar-active" : undefined
+              }>Attendance</NavLink>
           </li>
 
           <li>

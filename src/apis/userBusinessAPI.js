@@ -1,5 +1,15 @@
 import api from "./configs/axiosConfig";
 
+//----- Retrieve all user-businesses
+export const getAll = async () => {
+  const res = await api.request({
+    method: "GET",
+    url: "/api/userBusiness"
+  });
+
+  return res;
+};
+
 //----- Add new user-business
 export const create = async (userId, businessId) => {
   const res = await api.request({

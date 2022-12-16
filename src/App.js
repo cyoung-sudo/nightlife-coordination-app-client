@@ -8,6 +8,7 @@ import Home from "./features/home/Home";
 import Signup from "./features/auth/Signup";
 import Login from "./features/auth/Login";
 import BusinessSearch from "./features/business/BusinessSearch";
+import Attendance from "./features/business/Attendance";
 import AllUsers from "./features/user/AllUsers";
 import Profile from "./features/user/Profile";
 import Settings from "./features/user/Settings";
@@ -110,12 +111,19 @@ function App() {
           </Route>
           {/*----- /User routes -----*/}
 
-          <Route path="business-search" element={
-            <BusinessSearch 
-              user={user}
-              handlePopup={handlePopup}
-              handleExpiredSession={handleExpiredSession}/>
-          }/>
+          {/*----- Business routes -----*/}
+          <Route path="businesses">
+            <Route path="search" element={
+              <BusinessSearch 
+                user={user}
+                handlePopup={handlePopup}
+                handleExpiredSession={handleExpiredSession}/>
+            }/>
+            <Route path="attendance" element={
+              <Attendance/>
+            }/>
+          </Route>
+          {/*----- /Business routes -----*/}
         </Routes>
       </div>
 
