@@ -9,7 +9,10 @@ export default function BusinessDisplay(props) {
   return (
     <ul id="businessDisplay">
       {props.businesses.map((business, idx) => (
-        <li className="businessDisplay-result" key={idx}>
+        <li
+          data-testid="businessDisplay-result"
+          className="businessDisplay-result"
+          key={idx}>
           <img className="businessDisplay-img" src={business.image_url} alt="business-image"/>
 
           <div className="businessDisplay-content">

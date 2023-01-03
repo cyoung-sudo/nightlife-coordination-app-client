@@ -5,6 +5,7 @@ export default function BusinessForm({setTerm, setLocation, setPrice, setOpen, h
     <form id="businessForm" onSubmit={handleSubmit}>
       <div className="businessForm-input">
         <input
+          data-testid="businessForm-term"
           onChange={e => setTerm(e.target.value)}
           type="text" 
           placeholder="term"/>
@@ -12,6 +13,7 @@ export default function BusinessForm({setTerm, setLocation, setPrice, setOpen, h
 
       <div className="businessForm-input">
         <input
+          data-testid="businessForm-location"
           onChange={e => setLocation(e.target.value)}
           type="text" 
           placeholder="location"/>
@@ -32,7 +34,10 @@ export default function BusinessForm({setTerm, setLocation, setPrice, setOpen, h
       </div>    
 
       <div className="businessForm-submit">
-        <input type="submit" value="Submit"/>
+        <input 
+          data-testid="businessForm-submit"
+          type="submit"
+          value="Submit"/>
       </div>
     </form>
   );

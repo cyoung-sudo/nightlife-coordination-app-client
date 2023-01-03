@@ -6,6 +6,7 @@ export default function AuthForm({setUsername, setPassword, handleSubmit}) {
       <div className="authForm-input">
         <label htmlFor="authForm-username">Username</label>
         <input
+          data-testid="authForm-username"
           onChange={e => setUsername(e.target.value)}
           type="text" 
           id="authForm-username"
@@ -15,6 +16,7 @@ export default function AuthForm({setUsername, setPassword, handleSubmit}) {
       <div className="authForm-input">
         <label htmlFor="authForm-password">Password</label>
         <input
+          data-testid="authForm-password"
           onChange={e => setPassword(e.target.value)}
           type="password" 
           id="authForm-password"
@@ -22,7 +24,10 @@ export default function AuthForm({setUsername, setPassword, handleSubmit}) {
       </div>
 
       <div className="authForm-submit">
-        <input type="submit" value="Submit"/>
+        <input
+          data-testid="authForm-submit"
+          type="submit"
+          value="Submit"/>
       </div>
     </form>
   );

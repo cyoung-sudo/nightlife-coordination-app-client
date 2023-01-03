@@ -9,7 +9,10 @@ export default function UserBusinessDisplay(props) {
   return (
     <ul id="userBusinessDisplay">
       {props.businesses.map((business, idx) => (
-        <li className="userBusinessDisplay-result" key={idx}>
+        <li 
+          data-testid="userBusinessDisplay-result"
+          className="userBusinessDisplay-result"
+          key={idx}>
           <img className="userBusinessDisplay-img" src={business.image_url} alt="business-image"/>
 
           <div className="userBusinessDisplay-content">
@@ -57,7 +60,9 @@ export default function UserBusinessDisplay(props) {
             <div className="userBusinessDisplay-content-links">
               <a href={business.url} target="_blank" rel="noreferrer">Visit Yelp Page</a>
               {props.currentUser && (props.currentUser._id === props.profileUser._id) &&
-                <button onClick={() => props.handleRemove(business.id)}>
+                <button 
+                  data-testid="userBusinessDisplay-remove"
+                  onClick={() => props.handleRemove(business.id)}>
                   No Longer Going
                 </button>
               }

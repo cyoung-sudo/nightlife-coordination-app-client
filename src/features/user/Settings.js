@@ -83,7 +83,11 @@ export default function Settings(props) {
         <ul id="settings-list">
           <li className="settings-group">
             <div>Delete Account?</div>
-            <button onClick={handleDelete}>Delete</button>
+            <button
+              data-testid="settings-delete"
+              onClick={handleDelete}>
+              Delete
+            </button>
           </li>
         </ul>
       </div>
