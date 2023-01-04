@@ -49,10 +49,11 @@ export const getForUser = async userId => {
   return res;
 };
 
-//----- Delete user-businesses for authenticated user
-export const deleteForUser = async () => {
+//----- Delete user-businesses for user
+export const deleteForUser = async userId => {
   const res = await api.request({
     method: "DELETE",
+    data: { userId },
     url: "/api/userBusiness/user"
   });
 

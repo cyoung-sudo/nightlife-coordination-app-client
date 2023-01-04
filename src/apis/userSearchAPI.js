@@ -28,10 +28,11 @@ export const getForUser = async userId => {
   return res;
 };
 
-//----- Delete user-search for authenticated user
-export const deleteForUser = async () => {
+//----- Delete user-search for user
+export const deleteForUser = async userId => {
   const res = await api.request({
     method: "DELETE",
+    data: { userId },
     url: "/api/userSearch/user"
   });
 

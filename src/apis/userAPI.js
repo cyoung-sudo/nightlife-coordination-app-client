@@ -21,10 +21,11 @@ export const getOne = async id => {
   return res;
 };
 
-//----- Delete authenticated user
-export const deleteUser = async () => {
+//----- Delete a user
+export const deleteUser = async userId => {
   const res = await api.request({
     method: "DELETE",
+    data: { userId },
     url: "/api/user"
   });
 

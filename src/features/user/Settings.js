@@ -9,6 +9,7 @@ import * as userBusinessAPI from "../../apis/userBusinessAPI";
 
 export default function Settings(props) {
   // Requested data
+  const [user, setUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
 
   //----- Checks authentication on load
@@ -16,6 +17,7 @@ export default function Settings(props) {
     authAPI.getUser()
     .then(res => {
       if(res.data.success) {
+        setUser(res.data.user);
         setAuthenticated(true);
       } else {
         props.handlePopup(res.data.message, "error");
@@ -34,7 +36,7 @@ export default function Settings(props) {
       .then(res => {
         if(res.data.success) {
           // Delete user-searches
-          return userSearchAPI.deleteForUser();
+          return userSearchAPI.deleteForUser(user._id);
         } else {
           return {data: {success: false }};
         }
@@ -42,7 +44,7 @@ export default function Settings(props) {
       .then(res => {
         if(res.data.success) {
           // Delete user-businesses
-          return userBusinessAPI.deleteForUser();
+          return userBusinessAPI.deleteForUser(user._id);
         } else {
           return {data: {success: false }};
         }
